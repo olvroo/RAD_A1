@@ -1,0 +1,12 @@
+<div class="popup" id="loginPage">
+ <a href="javascript:void(0)" class="closebtn" onclick="closeLoginPage()">&times;</a>
+  <div class='popup-container'>
+   <h2>RMIT Fashion</h2>
+   <h4>Quality is not an act but a habit.</h4>
+   <button class="btn" onclick="openLoginForm()">Login</button>
+   <%= form_tag url_for('/auth/twitter'), :method => :post, :local => true do %>
+    <button type='submit' class="btn cancel"><h5 class="fa fa-twitter" aria-hidden="true">&nbsp Login with Twitter </h5></button>
+   <% end %>
+   <a onclick="openSignupForm()">Sign Up</a>
+  </div>
+</div>

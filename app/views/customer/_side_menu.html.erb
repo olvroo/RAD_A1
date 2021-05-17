@@ -1,0 +1,29 @@
+<div id="mySidenav" class="sidenav">
+ <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <h4 class="fa fa-user"> 
+ <% if @user['id'] == nil %>
+   <a onclick="openLoginPage()">&nbsp Login</a> 
+  </h4>
+  <% else %>
+   &nbsp <%= @user['username'] %> </h4>
+  <h4 class="fa fa-sign-out-alt"> 
+   <%= link_to('&nbsp Logout'.html_safe, :controller => "customer", :action => "logout") %>
+  </h4>
+ <% end %>
+ <%= render 'customer/login_page' %>
+ <%= render 'customer/login_form' %>
+ <%= render 'customer/signup_form' %>
+ <h4 class="fa fa-home">
+  <%= link_to('&nbsp Home'.html_safe, :controller => "customer", :action => "home") %>
+ </h4>
+ <h4 class="fa fa-tag"> &nbsp Shop </h4>
+ <% @categories.each do |collection| %>
+  <%= link_to(collection.name, show_category_path(collection.name)) %>
+ <% end %>
+ <h4 class="fa fa-heart">
+  <%= link_to('&nbsp Saved'.html_safe, customer_saved_items_path()) %>
+ </h4>
+ <h4 class="fa fa-question-circle">
+  <%= link_to('&nbsp Help & Support'.html_safe, :controller => "customer", :action => "home") %>
+ </h4>
+</div>

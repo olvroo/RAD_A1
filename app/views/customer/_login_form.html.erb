@@ -1,0 +1,16 @@
+<div class="popup" id="loginForm">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeLoginForm()">&times;</a>
+  <div class="popup-container">
+    <%= form_tag :controller => 'customer', :action => 'email_login' do %>
+      <h1>Login</h1>
+      <label for="input"><b>Email/ Username</b></label>
+      <%= text_field_tag('input', nil, :placeholder => "Enter Email/ Username", :required => true) %>
+
+      <label for="pass"><b>Password</b></label>
+      <%= password_field_tag('pass', nil, :placeholder => "Enter Password", :required => true) %>
+
+      <%= button_tag('Login', :type => "submit", :class => "btn") %>
+    <% end %>
+    <a>Forgot Password</a>
+  </div>
+</div>

@@ -1,0 +1,235 @@
+// Place all the styles related to the Customer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// import bootstrap
+@import "bootstrap-sprockets";
+@import "bootstrap";
+// import font awesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+.row{
+    width: 100%;
+}
+
+.col{
+    max-width: 230px;
+}
+
+
+.no-margin{
+    margin: 0px;
+}
+
+.left-right-margin{
+    margin: 0px 15px 0px 15px;
+}
+
+.margin-auto{
+    margin: auto;
+}
+
+.empty-container{
+    padding: 150px 0px 150px 0px;
+}
+
+
+.no-padding{
+    padding: 0px;
+}
+
+//custom navbar styling
+.navbar-brand{
+    float: none;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex-container{
+    display: flex;    
+}
+
+#popular .flex-container a,
+#collection .flex-container a{
+    width: 50%;
+    margin: 20px 0px 10px 0px;
+    color: black;
+    text-align: right;
+}
+
+#popular .flex-container h2,
+#collection .flex-container h2{
+    width: 50%;
+}
+
+// custom top banner
+#top-banner{
+    background-color: #000000;
+    color: #FFFFFF;
+    margin-top: 0px;
+}
+
+#top-banner #info {
+    padding-top: 300px;
+}
+
+#top-banner #fav-icon {
+    margin-left: 90%;
+    padding-bottom: 10px;
+}
+
+#top-banner #fav-icon a{
+    margin: 0px 10px 0px 10px;
+    color: #FFFFFF;
+}
+
+#popular img,
+#saved_item img,
+#category_item img{
+    width: 100%;
+    height: 200px;
+}
+
+.card{
+    border-style: solid;
+    padding: 10px;
+    margin: 0px auto 0px auto;
+}
+
+.form{
+    display: block;
+    width: 300px;     
+    padding-bottom: 10px;
+}
+
+// side bar styling
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav h4 {
+  padding: 8px 8px 8px 16px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav h4 a {
+  padding: 0px;
+  color: #818181;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.popup {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.popup-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.popup-container input[type=text], .popup-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.popup-container input[type=text]:focus, .popup-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.popup-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.popup-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.popup-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}

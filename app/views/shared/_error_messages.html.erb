@@ -1,0 +1,14 @@
+<% if @error == 'true' %>
+    <div id="error_messages">
+        <div class="alert alert-danger">
+            Email is already subscribed to newsletter.
+        </div>
+    </div>
+<% end %>
+<% if @error == 'false' %>
+    <div id="success_messages">
+        <div class="alert alert-success">
+            Congratulations! You are now subscribed to our newsletter.            
+        </div>
+    </div>
+<% end %>

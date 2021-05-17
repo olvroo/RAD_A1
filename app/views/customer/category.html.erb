@@ -1,0 +1,38 @@
+<% content_for :title, @title %>
+<% content_for :nav_header, @nav_header %>
+
+<% content_for :navbar do %>
+    <nav class="navbar navbar-default no-margin">
+      <div class="navbar-header row no-margin">
+        <p class="navbar-brand"><%= yield(:nav_header) %></p>
+      </div>
+      <%= render 'customer/header' %>	
+    </nav>
+<% end %>
+
+<% content_for :items do %>
+    <% @category_items.each do |item| %>
+        <div class="col col-sm-3 margin-auto">
+    	    <%= image_tag(item.image, :alt => item.name+" Icon") %>
+            <h3><%= item.name %></h3>
+        	<p>$<%= item.price %></p>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :content do %>
+    <div id="content" class="jumbotron no-padding">
+        <div id="category_item" class="left-right-margin">
+            <% if @category_items.any? %>
+                <div class="container row no-margin">
+                  <%= content_for?(:items) ? yield(:items) : yield %>
+                </div>
+            <% else %>
+                <div class="empty-container">
+                    <h3 class="center">There are no items of this category currently registered</h3>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+

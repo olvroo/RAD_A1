@@ -1,0 +1,42 @@
+<% content_for :title, @title %>
+<% content_for :nav_header, @nav_header %>
+
+<% content_for :navbar do %>
+  <nav class="navbar navbar-default no-margin">
+    <div class="navbar-header row no-margin">
+      <p class="navbar-brand"><%= yield(:nav_header) %></p>
+    </div>
+    <%= render 'customer/header' %>	
+  </nav>
+<% end %>
+
+<% content_for :saved_items do %>
+    <% if @saved_items.any?%>
+      <% @saved_items.each do |item| %>
+          <div class="col col-sm-3 margin-auto">
+      	    <%= image_tag(item['image'], :alt => item['name']+" Icon") %>
+              <h3><%= item['name'] %></h3>
+          	<p>$<%= item['price'] %></p>
+          	<%= link_to('<i class="fa fa-heart"></i>'.html_safe, unsave_item_path(item['id']), :style => "color: red;")%>
+          </div>
+      <% end %>
+    <% else %>
+      <div class="empty-container">
+        <h3 class="center"> No items are currently being saved</h3>
+      </div>
+    <% end %>
+<% end %>
+
+
+<% content_for :content do %>
+    <div id="content" class="jumbotron no-padding">
+      <div id="top-banner">
+      </div>
+      <div id="saved_item" class="left-right-margin">
+       <div class="container row no-margin">
+          <%= content_for?(:saved_items) ? yield(:saved_items) : yield %>
+        </div>
+      </div>
+    </div>
+<% end %>
+

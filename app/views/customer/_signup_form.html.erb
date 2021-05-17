@@ -1,0 +1,22 @@
+<div class="popup" id="signupForm">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeSignupForm()">&times;</a>
+  <div class="popup-container">
+    <%= form_tag :controller => 'customer', :action => 'email_signup' do %>
+      <h1>Sign Up</h1>
+      <label for="username"><b>Username</b></label>
+      <%= text_field_tag('username', nil, :placeholder => "Enter Username", :required => true) %>
+
+      <label for="email"><b>Email</b></label>
+      <%= text_field_tag('email', nil, :placeholder => "Enter Email", :required => true) %>
+
+      <label for="pass"><b>Password</b></label>
+      <%= password_field_tag('pass', nil, :placeholder => "Enter Password", :required => true) %>
+
+      <label for="re_pass"><b>Re-input Password</b></label>
+      <%= password_field_tag('re_pass', nil, :placeholder => "Re-Enter Password", :required => true) %>
+
+      <%= button_tag('Register', :type => "submit", :class => "btn") %>
+    <% end %>
+    <a onclick="openLoginForm()">Login</a>
+  </div>
+</div>

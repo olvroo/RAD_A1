@@ -1,0 +1,101 @@
+<% content_for :title, @title %>
+<% content_for :nav_header, @nav_header %>
+
+<% content_for :navbar do %>
+  <nav class="navbar navbar-default no-margin">
+    <div class="navbar-header row no-margin">
+      <p class="navbar-brand"><%= yield(:nav_header) %></p>
+    </div>
+    <%= render 'customer/header' %>	
+  </nav>
+<% end %>
+
+<% content_for :top_banner do %>
+  <h3><%= @banner['name'] %></h3>
+  <p>Cold & Brilliant Start</p>
+	<p>$<%= @banner['price'] %></p>
+<% end %>
+
+<% content_for :populars do %>
+    <% @populars.each do |item| %>
+        <div class="col col-sm-3 margin-auto">
+    	    <%= image_tag(item.image, :alt => item.name+" Icon") %>
+            <h3><%= item.name %></h3>
+        	<p>$<%= item.price %></p>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :collections do %>
+    <% @categories.each do |collection| %>
+        <div class="col col-sm-3 margin-auto">
+            <div class="card w-50">
+                <div class="card-body">
+                    <h4 class="card-title"><%= collection.name %></h5>
+                    <p class="card-text"><%= collection.total_items %> items</p>
+                    <%= link_to('All Items', show_category_path(collection.name), :class => "btn btn-primary") %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+<% content_for :content do %>
+    <% if flash != nil %>
+        <div class="alert-info", style="max-height: 70px; padding: 5px 0px 0px 5px;">
+            <% flash.each do |key, value| %>
+                <%= value.html_safe %>
+            <% end %>
+        </div>
+    <% end %>
+    <div id="content" class="jumbotron no-padding">
+      <div id="top-banner">
+        <% if @banner.any? %>
+          <div class="row left-right-margin" id="info">
+            <%= content_for?(:top_banner) ? yield(:top_banner) : yield %>
+      		</div>
+          <div class="row left-right-margin" id="fav-icon">
+            <%= link_to('<i class="fa fa-heart"></i>'.html_safe, save_item_path(@banner['id'])) %>
+          </div>
+        <% else %>
+          <div class="center empty-container">
+            <h3>There is no more items to be featured. You have saved all items</h3>
+          </div>
+        <% end %>
+      </div>
+      <div id="popular" class="left-right-margin">
+        <div class = "flex-container">
+          <h2>Popular</h2>
+          <%= link_to('See all +', customer_popular_path()) %>
+        </div>
+        <div class="container row no-margin">
+          <%= content_for?(:populars) ? yield(:populars) : yield %>
+        </div>
+      </div>
+      <div id="collection" class="left-right-margin">
+        <div class = "flex-container">
+          <h2>Collections</h2>
+          <%= link_to('See all +', customer_popular_path()) %>
+        </div>
+        <div class="container row no-margin">
+          <%= content_for?(:collections) ? yield(:collections) : yield %>
+        </div>
+      </div>
+      <div id="newsletter" class="left-right-margin">
+        <h2>Newsletter</h2>
+        <p>Signup to our newsletter</p>
+        <div class="form">
+          <%= form_tag :controller => 'customer', :action => 'newsletter' do %>
+            <%= render 'shared/error_messages' %>
+            <div class="input-group">
+              <%= email_field_tag('email', @email, :class => "form-control", :placeholder => "Enter your Email", :required => true) %>
+              <div class="input-group-btn">
+                <%= button_tag('<i class="fa fa-angle-right"></i>'.html_safe, :type => "submit", :class => "btn btn-default") %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
